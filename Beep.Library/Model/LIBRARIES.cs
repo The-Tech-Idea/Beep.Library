@@ -54,18 +54,18 @@ namespace TheTechIdea.Beep.Library.Model
             }
         }
 
-        private System.String _OWNER_KOCNOValue;
+        private System.String _OWNER_NOValue;
 
-        public System.String OWNER_KOCNO
+        public System.String OWNER_NO
         {
             get
             {
-                return this._OWNER_KOCNOValue;
+                return this._OWNER_NOValue;
             }
 
             set
             {
-                SetProperty(ref _OWNER_KOCNOValue, value);
+                SetProperty(ref _OWNER_NOValue, value);
             }
         }
 

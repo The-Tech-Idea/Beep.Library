@@ -1,5 +1,4 @@
-﻿
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using TheTechIdea.Beep;
 using TheTechIdea.Beep.Editor;
 using DataManagementModels.Editor;
@@ -7,7 +6,15 @@ using TheTechIdea.Beep.Report;
 using TheTechIdea.Util;
 using TheTechIdea.Beep.MVVM;
 using TheTechIdea.Beep.Library.Model;
-using Beep.Vis.Module
+using Beep.Vis.Module;
+
+
+
+
+using System.Collections.Generic;
+using System.Linq;
+using System;
+using System.IO;
 
 namespace Beep.Library.VM
 {
@@ -47,9 +54,9 @@ namespace Beep.Library.VM
             UnitofWork.PostCreate += UnitofWork_PostCreate;
             UnitofWork.Sequencer = "LIB_FILES_SEQ";
          
-            GlobalPath = dhubConfig.Library.GlobalPath  ;
-            TeamPath = dhubConfig.Library.GetTeamPath();
-            GfxPath = dhubConfig.Library.GFXPath;
+            //GlobalPath = dhubConfig.Library.GlobalPath  ;
+            //TeamPath = dhubConfig.Library.GetTeamPath();
+            //GfxPath = dhubConfig.Library.GFXPath;
         }
         public string GetGlobalLibraryPath(string libraryname)
         {
@@ -57,7 +64,7 @@ namespace Beep.Library.VM
         }
         public string GetMyLibraryPath(string libraryname)
         {
-            return System.IO.Path.Combine(DhubConfig.Library.GetMyPath(), libraryname);
+            return System.IO.Path.Combine(LibraryPath, libraryname);
         }
         public string GetTicketsPath(string libraryname)
         {
@@ -69,23 +76,23 @@ namespace Beep.Library.VM
         }
         public string GetTeamLibraryPath(string libraryname)
         {
-            return System.IO.Path.Combine(DhubConfig.Library.GetTeamPath(), libraryname);
+            return System.IO.Path.Combine(TeamPath, libraryname);
         }
         public void GetLibraryFiles(double LibID)
         {
             UnitofWork.Get(new List<AppFilter>() { new AppFilter() { FieldName = "LIBRARY_ID", Operator = "=", FilterValue = LibID.ToString() } });
-            CurrentLibrary = Repo.LoadDataFirst<LIBRARIES>($"select * from libraries where id={LibID}", null).Result;
+            //CurrentLibrary = Repo.LoadDataFirst<LIBRARIES>($"select * from libraries where id={LibID}", null).Result;
         }
         public void GetLibraryFiles(double LibID,double folderid)
         {
             Folder_id = folderid;
             UnitofWork.Get(new List<AppFilter>() { new AppFilter() { FieldName = "LIBRARY_ID", Operator = "=", FilterValue = LibID.ToString() },new AppFilter() { FieldName = "FOLDER_ID", Operator = "=", FilterValue = folderid.ToString() } });
-            CurrentLibrary = Repo.LoadDataFirst<LIBRARIES>($"select * from libraries where id={LibID}", null).Result;
+           // CurrentLibrary = Repo.LoadDataFirst<LIBRARIES>($"select * from libraries where id={LibID}", null).Result;
         }
         public List<LIB_FILES> GetMyFiles()
         {
-            UnitofWork.Get(new List<AppFilter>() { new AppFilter() { FieldName= "INSERTBY", Operator="=", FilterValue = DhubConfig.userManager.User.KOCNO } });
-            return UnitofWork.Units.Where(x => x.INSERTBY == DhubConfig.userManager.User.USERNAME).ToList();
+            UnitofWork.Get(new List<AppFilter>() { new AppFilter() { FieldName= "INSERTBY", Operator="=", FilterValue = VisManager.User.Email } });
+            return UnitofWork.Units.Where(x => x.INSERTBY ==VisManager.User.Email).ToList();
         }
         public List<string> GetFileTypes()
         {
@@ -96,8 +103,8 @@ namespace Beep.Library.VM
             LIB_FILES r = (LIB_FILES)sender;
             //Status = RecordStatus.New;
             r.INSERTDATE = DateTime.Now;
-            r.INSERTBY = DhubConfig.userManager.User.KOCNO;
-            r.TEAMCODE=DhubConfig.userManager.User.TEAM;
+            r.INSERTBY = VisManager.User.Email;
+            r.TEAMCODE=VisManager.User.Email;
             r.DOCDATE = DateTime.Now;
             if (CurrentLibrary != null) {
                 r.LIBRARY_ID = CurrentLibrary.ID;
@@ -123,21 +130,13 @@ namespace Beep.Library.VM
             UnitofWork.Create(lIB_FILES);
             return lIB_FILES;
         }
-        public LIB_FILES CreateFileForReview(string filename, string filepath, double reviewid,string uwi=null, string desription = null)
-        {
-            // Create lib_Files for Review
-            LIB_FILES lIB_FILES = CreateLibFileRecord(filename, filepath, desription);
-            lIB_FILES.REVIEW_ID = reviewid;
-            lIB_FILES.UWI = uwi;
-            UnitofWork.Create(lIB_FILES);
-            return lIB_FILES;
-        }
-        public LIB_FILES CreateFileForTicket(string filename, string filepath, double ticketid, string uwi=null, string desription = null)
+      
+        public LIB_FILES CreateFileForTicket(string filename, string filepath, double ticketid, string desription = null)
         {
             // Create lib_Files for Review
             LIB_FILES lIB_FILES = CreateLibFileRecord(filename, filepath, desription);
             lIB_FILES.TICKET_ID = ticketid;
-            lIB_FILES.UWI = uwi;
+         
             UnitofWork.Create(lIB_FILES);
             return lIB_FILES;
         }

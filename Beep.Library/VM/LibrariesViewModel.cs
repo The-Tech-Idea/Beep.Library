@@ -6,6 +6,8 @@ using DataManagementModels.Editor;
 using TheTechIdea.Beep.MVVM;
 using TheTechIdea.Beep.Library.Model;
 using Beep.Vis.Module;
+using System.Collections.Generic;
+using System;
 
 
 namespace Beep.Library.VM
@@ -49,19 +51,19 @@ namespace Beep.Library.VM
             UnitofWork.Sequencer = "LIBRARIES_SEQ";
             UnitofWork.PostCreate += UnitofWork_PostCreate;
 
-            MyLibraryPath = dhubConfig.Library.GetMyPath();
-            GlobalPath = dhubConfig.Library.GlobalPath;
-            TeamPath = dhubConfig.Library.GetTeamPath();
+            //MyLibraryPath = dhubConfig.Library.GetMyPath();
+            //GlobalPath = dhubConfig.Library.GlobalPath;
+            //TeamPath = dhubConfig.Library.GetTeamPath();
         }
         private void UnitofWork_PostCreate(object? sender, UnitofWorkParams e)
         {
             LIBRARIES r = (LIBRARIES)sender;
             //Status = RecordStatus.New;
             r.ROW_CREATE_DATE = DateTime.Now;
-            r.OWNER_KOCNO = DhubConfig.userManager.User.KOCNO;
-            r.OWNER_TEAMID = DhubConfig.userManager.User.TEAM;
-            r.GROUPCODE = DhubConfig.userManager.User.GRP;
-            r.TEAMCODE = DhubConfig.userManager.User.TEAM;
+            //r.OWNER_KOCNO = DhubConfig.userManager.User.KOCNO;
+            //r.OWNER_TEAMID = DhubConfig.userManager.User.TEAM;
+            //r.GROUPCODE = DhubConfig.userManager.User.GRP;
+            //r.TEAMCODE = DhubConfig.userManager.User.TEAM;
         }
         public void GetLibraries()
         {
@@ -115,7 +117,7 @@ namespace Beep.Library.VM
         {
             try
             {
-                MyLibraries = (List<LIBRARIES>)Repo.LoadData<LIBRARIES>($" select * from LIBRARIES where  OWNER_KOCNO='{DhubConfig.userManager.User.KOCNO}'", null).Result;
+             //   MyLibraries = (List<LIBRARIES>)Repo.LoadData<LIBRARIES>($" select * from LIBRARIES where  OWNER_KOCNO='{DhubConfig.userManager.User.KOCNO}'", null).Result;
             }
             catch (Exception ex)
             {
@@ -128,7 +130,7 @@ namespace Beep.Library.VM
         {
             try
             {
-                GrantedLibraries = (List<LIBRARIES>)Repo.LoadData<LIBRARIES>($" select c.* from libraries c where c.id in (select a.library_id from LIBRARIES_PRIVILEGES a where a.BU_ID  in (select b.id from businessunits_members b where b.kocno='{DhubConfig.userManager.User.KOCNO}'))", null).Result;
+              //  GrantedLibraries = (List<LIBRARIES>)Repo.LoadData<LIBRARIES>($" select c.* from libraries c where c.id in (select a.library_id from LIBRARIES_PRIVILEGES a where a.BU_ID  in (select b.id from businessunits_members b where b.kocno='{DhubConfig.userManager.User.KOCNO}'))", null).Result;
             }
             catch (Exception ex)
             {

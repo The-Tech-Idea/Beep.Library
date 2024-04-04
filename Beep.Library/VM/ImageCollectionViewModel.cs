@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheTechIdea.Beep;
+using System.IO;
 
 namespace Beep.Library.VM
 {
@@ -18,7 +19,7 @@ namespace Beep.Library.VM
         string imagesLocation;
         public ImageCollectionViewModel(IDMEEditor dMEEditor, IVisManager visManager) :base (dMEEditor, visManager)
         {
-            foreach(string filename in Directory.EnumerateFiles(dhubConfig.Library.GFXPath))
+            foreach(string filename in Directory.EnumerateFiles(ImagesLocation))
             {
                 images.Add(filename);
             }

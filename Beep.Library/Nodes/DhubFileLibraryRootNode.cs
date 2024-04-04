@@ -1,6 +1,8 @@
 ﻿using Beep.Library.VM;
 using Beep.Vis.Module;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using TheTechIdea;
 using TheTechIdea.Beep;
 using TheTechIdea.Beep.Addin;
@@ -84,16 +86,16 @@ namespace Beep.Library.Nodes
 
             try
             {
-                DhubConfig = DMEEditor.GetDhub();
-                if (DhubConfig == null)
-                {
-                    DMEEditor.AddLogMessage("Beep", "Error Could Find DhubConfig Instance", DateTime.Now, -1, null, Errors.Failed);
-                    return DMEEditor.ErrorObject;
-                }
-                if (ViewModel == null)
-                {
-                    ViewModel = new LibrariesViewModel(DMEEditor,Visutil);
-                }
+                //DhubConfig = DMEEditor.GetDhub();
+                //if (DhubConfig == null)
+                //{
+                //    DMEEditor.AddLogMessage("Beep", "Error Could Find DhubConfig Instance", DateTime.Now, -1, null, Errors.Failed);
+                //    return DMEEditor.ErrorObject;
+                //}
+                //if (ViewModel == null)
+                //{
+                //    ViewModel = new LibrariesViewModel(DMEEditor,Visutil);
+                //}
                 //-------------------------------------------------------------------------------------
                 ViewModel.GetLibraries();
                 List<LIBRARIES> Libs = ViewModel.AllLibraries;

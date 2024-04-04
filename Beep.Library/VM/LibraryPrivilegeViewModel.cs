@@ -5,6 +5,7 @@ using TheTechIdea.Beep.Editor;
 using DataManagementModels.Editor;
 using TheTechIdea.Beep.Library.Model;
 using Beep.Vis.Module;
+using System.Collections.Generic;
 
 namespace Beep.Library.VM
 { 
@@ -31,7 +32,7 @@ namespace Beep.Library.VM
         }
         public void GetLibraryPrivileges(double id)
         {
-            CurrentLibrary = DhubConfig.DataRepo.LoadDataFirst<LIBRARIES>($"select * from LIBRARIES where id={id}", null).Result;
+          //  CurrentLibrary = DhubConfig.DataRepo.LoadDataFirst<LIBRARIES>($"select * from LIBRARIES where id={id}", null).Result;
           
             UnitofWork.Get(new List<TheTechIdea.Beep.Report.AppFilter>() { new TheTechIdea.Beep.Report.AppFilter() { FieldName = "LIBRARY_ID", Operator = "=", FilterValue = $"{id}" } });
         }

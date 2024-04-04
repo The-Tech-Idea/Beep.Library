@@ -54,33 +54,20 @@ public  LIB_FILES (){}
     }
     }
 
- private System.String  _UWIValue ;
 
- public System.String UWI
+
+ private  double  _REFNOValue ;
+
+ public  double REF_NO
     {
         get
         {
-            return this._UWIValue;
+            return this._REFNOValue;
         }
 
         set
         {
-       SetProperty(ref _UWIValue, value);
-    }
-    }
-
- private  double  _WCSValue ;
-
- public  double WCS
-    {
-        get
-        {
-            return this._WCSValue;
-        }
-
-        set
-        {
-       SetProperty(ref _WCSValue, value);
+       SetProperty(ref _REFNOValue, value);
     }
     }
 

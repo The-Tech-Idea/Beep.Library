@@ -6,6 +6,8 @@ using TheTechIdea.Beep.DataBase;
 using TheTechIdea.Beep.Vis;
 using TheTechIdea.Util;
 using Beep.Library.VM;
+using System;
+using System.Collections.Generic;
 namespace Beep.Library.Nodes
 {
     [Addin(Caption = "Files", Name = "DhubFileEntitySheetNode.Dhub", misc = "Dhub", iconimage = "file.png", menu = "Dhub", ObjectType = "Dhub")]

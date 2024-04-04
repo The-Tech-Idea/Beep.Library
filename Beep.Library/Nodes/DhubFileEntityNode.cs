@@ -6,6 +6,9 @@ using TheTechIdea.Beep.DataBase;
 using Beep.Library.VM;
 using TheTechIdea.Beep.Vis;
 using TheTechIdea.Util;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace Beep.Library.Nodes
 {

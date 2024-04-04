@@ -1,6 +1,8 @@
 ﻿using Beep.Library.VM;
 using Beep.Vis.Module;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using TheTechIdea;
 using TheTechIdea.Beep;
 using TheTechIdea.Beep.DataBase;
@@ -187,30 +189,30 @@ namespace Beep.Library.Nodes
 
             try
             {
-                DhubConfig = DMEEditor.GetDhub();
-                if (DhubConfig == null)
-                {
-                    DMEEditor.AddLogMessage("Beep", "Error Could Find DhubConfig Instance", DateTime.Now, -1, null, Errors.Failed);
-                    return DMEEditor.ErrorObject;
-                }
-                if (DhubConfig != null)
-                {
-                    if (DhubConfig.userManager.User.KOCNO == LIBRARy.OWNER_KOCNO)
-                    {
-                        DMEEditor.Passedarguments.CurrentEntity = "LIBRARY";
-                        DMEEditor.Passedarguments.ObjectName = BranchText;
-                        DMEEditor.Passedarguments.ObjectType = "LIBRARY";
-                        if (DMEEditor.Passedarguments.Objects.Any(p => p.Name != "LIBRARY"))
-                        {
-                            DMEEditor.Passedarguments.Objects.Add(new ObjectItem { Name = "LIBRARY", obj = LIBRARy });
-                        }
-                        DMEEditor.Passedarguments.Parameterdouble1 = LIBRARy.ID;
-                        DMEEditor.Passedarguments.Parameterdouble2 = LIBRARy.ID;
-                        Visutil.ShowPage("uc_library_privileges", (PassedArgs)DMEEditor.Passedarguments);
-                    }
-                    else
-                        Visutil.Controlmanager.ShowMessege("Dhub", "Your not the Library Owner", null);
-                }
+                //DhubConfig = DMEEditor.GetDhub();
+                //if (DhubConfig == null)
+                //{
+                //    DMEEditor.AddLogMessage("Beep", "Error Could Find DhubConfig Instance", DateTime.Now, -1, null, Errors.Failed);
+                //    return DMEEditor.ErrorObject;
+                //}
+                //if (DhubConfig != null)
+                //{
+                //    if (DhubConfig.userManager.User.KOCNO == LIBRARy.OWNER_KOCNO)
+                //    {
+                //        DMEEditor.Passedarguments.CurrentEntity = "LIBRARY";
+                //        DMEEditor.Passedarguments.ObjectName = BranchText;
+                //        DMEEditor.Passedarguments.ObjectType = "LIBRARY";
+                //        if (DMEEditor.Passedarguments.Objects.Any(p => p.Name != "LIBRARY"))
+                //        {
+                //            DMEEditor.Passedarguments.Objects.Add(new ObjectItem { Name = "LIBRARY", obj = LIBRARy });
+                //        }
+                //        DMEEditor.Passedarguments.Parameterdouble1 = LIBRARy.ID;
+                //        DMEEditor.Passedarguments.Parameterdouble2 = LIBRARy.ID;
+                //        Visutil.ShowPage("uc_library_privileges", (PassedArgs)DMEEditor.Passedarguments);
+                //    }
+                //    else
+                //        Visutil.Controlmanager.ShowMessege("Dhub", "Your not the Library Owner", null);
+                //}
 
 
                 //NodesHelpers.AddFolder(this, TreeEditor, DMEEditor, Visutil);
@@ -229,31 +231,31 @@ namespace Beep.Library.Nodes
 
             try
             {
-                DhubConfig = DMEEditor.GetDhub();
-                if (DhubConfig == null)
-                {
-                    DMEEditor.AddLogMessage("Beep", "Error Could Find DhubConfig Instance", DateTime.Now, -1, null, Errors.Failed);
-                    return DMEEditor.ErrorObject;
-                }
-                if (DhubConfig != null)
-                {
-                    if (DhubConfig.userManager.User.KOCNO == LIBRARy.OWNER_KOCNO)
-                    {
-                        DMEEditor.Passedarguments.CurrentEntity = "LIBRARY";
-                        DMEEditor.Passedarguments.ObjectName = BranchText;
-                        DMEEditor.Passedarguments.ObjectType = "LIBRARY";
-                        if (DMEEditor.Passedarguments.Objects.Any(p => p.Name != "LIBRARY"))
-                        {
-                            DMEEditor.Passedarguments.Objects.Add(new ObjectItem { Name = "LIBRARY", obj = LIBRARy });
-                        }
-                        DMEEditor.Passedarguments.Parameterdouble1 = LIBRARy.ID;
-                        DMEEditor.Passedarguments.Parameterdouble2 = Folder.ID;
-                        DMEEditor.Passedarguments.EventType = "FOLDER";
-                        Visutil.ShowPage("uc_library_files", (PassedArgs)DMEEditor.Passedarguments);
-                    }
-                    else
-                        Visutil.Controlmanager.ShowMessege("Dhub", "Your not the Library Owner", null);
-                }
+                //DhubConfig = DMEEditor.GetDhub();
+                //if (DhubConfig == null)
+                //{
+                //    DMEEditor.AddLogMessage("Beep", "Error Could Find DhubConfig Instance", DateTime.Now, -1, null, Errors.Failed);
+                //    return DMEEditor.ErrorObject;
+                //}
+                //if (DhubConfig != null)
+                //{
+                //    if (DhubConfig.userManager.User.KOCNO == LIBRARy.OWNER_KOCNO)
+                //    {
+                //        DMEEditor.Passedarguments.CurrentEntity = "LIBRARY";
+                //        DMEEditor.Passedarguments.ObjectName = BranchText;
+                //        DMEEditor.Passedarguments.ObjectType = "LIBRARY";
+                //        if (DMEEditor.Passedarguments.Objects.Any(p => p.Name != "LIBRARY"))
+                //        {
+                //            DMEEditor.Passedarguments.Objects.Add(new ObjectItem { Name = "LIBRARY", obj = LIBRARy });
+                //        }
+                //        DMEEditor.Passedarguments.Parameterdouble1 = LIBRARy.ID;
+                //        DMEEditor.Passedarguments.Parameterdouble2 = Folder.ID;
+                //        DMEEditor.Passedarguments.EventType = "FOLDER";
+                //        Visutil.ShowPage("uc_library_files", (PassedArgs)DMEEditor.Passedarguments);
+                //    }
+                //    else
+                //        Visutil.Controlmanager.ShowMessege("Dhub", "Your not the Library Owner", null);
+                //}
 
 
                 //NodesHelpers.AddFolder(this, TreeEditor, DMEEditor, Visutil);
