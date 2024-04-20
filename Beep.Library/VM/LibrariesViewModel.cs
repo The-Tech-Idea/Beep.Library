@@ -47,7 +47,7 @@ namespace Beep.Library.VM
         public ObservableBindingList<LIBRARIES> LIBRARIES { get { return UnitofWork.Units; } set { UnitofWork.Units = value; } }
         public LibrariesViewModel(IDMEEditor dMEEditor, IVisManager visManager) : base(dMEEditor, visManager)
         {
-            UnitofWork = new UnitofWork<LIBRARIES>(DMEEditor, "dhubdb", "LIBRARIES", "ID");
+            UnitofWork = new UnitofWork<LIBRARIES>(Editor, "dhubdb", "LIBRARIES", "ID");
             UnitofWork.Sequencer = "LIBRARIES_SEQ";
             UnitofWork.PostCreate += UnitofWork_PostCreate;
 
@@ -121,7 +121,7 @@ namespace Beep.Library.VM
             }
             catch (Exception ex)
             {
-                DMEEditor.AddLogMessage("Dhub", $"Error getting my libraries {ex.Message}", DateTime.Now, -1, ex.StackTrace,TheTechIdea.Util.Errors.Failed);
+                Editor.AddLogMessage("Dhub", $"Error getting my libraries {ex.Message}", DateTime.Now, -1, ex.StackTrace,TheTechIdea.Util.Errors.Failed);
                 
             }
             
@@ -134,7 +134,7 @@ namespace Beep.Library.VM
             }
             catch (Exception ex)
             {
-                DMEEditor.AddLogMessage("Dhub", $"Error getting my Granted libraries {ex.Message}", DateTime.Now, -1, ex.StackTrace, TheTechIdea.Util.Errors.Failed);
+                Editor.AddLogMessage("Dhub", $"Error getting my Granted libraries {ex.Message}", DateTime.Now, -1, ex.StackTrace, TheTechIdea.Util.Errors.Failed);
                 
             }
             

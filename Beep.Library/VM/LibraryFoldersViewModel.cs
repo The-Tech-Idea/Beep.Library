@@ -45,7 +45,7 @@ namespace Beep.Library.VM
         {
             
            
-            UnitofWork = new UnitofWork<LIB_FOLDERS>(DMEEditor, "dhubdb", "LIB_FOLDERS", "ID");
+            UnitofWork = new UnitofWork<LIB_FOLDERS>(Editor, "dhubdb", "LIB_FOLDERS", "ID");
             UnitofWork.PostCreate += UnitofWork_PostCreate;
             UnitofWork.Sequencer = "LIB_FOLDERS_SEQ";
          

@@ -50,7 +50,7 @@ namespace Beep.Library.VM
         public LibraryFilesViewModel(IDMEEditor dMEEditor, IVisManager visManager) : base(dMEEditor, visManager)
         {
 
-            UnitofWork = new UnitofWork<LIB_FILES>(DMEEditor, "dhubdb", "LIB_FILES", "ID");
+            UnitofWork = new UnitofWork<LIB_FILES>(Editor, "dhubdb", "LIB_FILES", "ID");
             UnitofWork.PostCreate += UnitofWork_PostCreate;
             UnitofWork.Sequencer = "LIB_FILES_SEQ";
          
@@ -239,14 +239,14 @@ namespace Beep.Library.VM
                     return lIB_FILES.ID;
                 }else
                 {
-                    DMEEditor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}- {er.Message}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
+                    Editor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}- {er.Message}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
                     return -1;
                 }
               
             }
             catch (Exception ex)
             {
-                DMEEditor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}", DateTime.Now, 0,null, TheTechIdea.Util.Errors.Failed);
+                Editor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}", DateTime.Now, 0,null, TheTechIdea.Util.Errors.Failed);
                 return -1;
             }
         }
@@ -282,7 +282,7 @@ namespace Beep.Library.VM
             }
             catch (Exception ex)
             {
-                DMEEditor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
+                Editor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
                 return -1;
             }
         }
@@ -317,7 +317,7 @@ namespace Beep.Library.VM
             }
             catch (Exception ex)
             {
-                DMEEditor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
+                Editor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
                 return -1;
             }
         }
@@ -353,7 +353,7 @@ namespace Beep.Library.VM
             }
             catch (Exception ex)
             {
-                DMEEditor.AddLogMessage("Dhub", $"Error moving file {filename} to {myLibraryPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
+                Editor.AddLogMessage("Dhub", $"Error moving file {filename} to {myLibraryPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
                 return -1;
             }
         }
@@ -387,7 +387,7 @@ namespace Beep.Library.VM
             }
             catch (Exception ex)
             {
-                DMEEditor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
+                Editor.AddLogMessage("Dhub", $"Error moving file {filename} to {MyLibraryPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
                 return -1;
             }
         }
@@ -421,7 +421,7 @@ namespace Beep.Library.VM
             }
             catch (Exception ex)
             {
-                DMEEditor.AddLogMessage("Dhub", $"Error moving file {sourcePath} to {destinationPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
+                Editor.AddLogMessage("Dhub", $"Error moving file {sourcePath} to {destinationPath}", DateTime.Now, 0, null, TheTechIdea.Util.Errors.Failed);
                 Console.WriteLine("Error during file copy: " + ex.Message);
             }
         }

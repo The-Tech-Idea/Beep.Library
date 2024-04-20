@@ -20,7 +20,7 @@ namespace Beep.Library.VM
 
         public LibraryPrivilegeViewModel(IDMEEditor dMEEditor, IVisManager visManager) : base(dMEEditor, visManager)
     {
-            UnitofWork = new UnitofWork<LIBRARIES_PRIVILEGES>(DMEEditor, "dhubdb", "LIBRARIES_PRIVILEGES", "ID");
+            UnitofWork = new UnitofWork<LIBRARIES_PRIVILEGES>(Editor, "dhubdb", "LIBRARIES_PRIVILEGES", "ID");
             UnitofWork.PostCreate += UnitofWork_PostCreate;
             UnitofWork.Sequencer = "LIBRARIES_PRIVILEGES_SEQ";
            // bUSINESSUNITs= (List<BUSINESSUNITS_HDR>)DhubConfig.DataRepo.LoadData<BUSINESSUNITS_HDR>("select * from BUSINESSUNITS_HDR", null).Result;
