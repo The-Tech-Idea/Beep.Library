@@ -38,7 +38,7 @@ namespace Beep.Library.Nodes
 
             ViewModel = viewmodel;
         }
-
+        public bool Visible { get; set; } = true;
         #region "Properties"
         public bool IsDataSourceNode { get; set; } = true;
         public string GuidID { get; set; } = Guid.NewGuid().ToString();

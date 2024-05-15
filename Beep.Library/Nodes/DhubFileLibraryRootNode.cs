@@ -28,6 +28,7 @@ namespace Beep.Library.Nodes
 
 
         }
+        public bool Visible { get; set; } = true;
         public IBranch ParentBranch { get; set; }
         public string ObjectType { get; set; } = "Dhub";
         public int ID { get; set; }

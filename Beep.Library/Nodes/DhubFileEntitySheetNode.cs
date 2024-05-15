@@ -39,6 +39,7 @@ namespace Beep.Library.Nodes
                 BranchID = pID;
             }
         }
+        public bool Visible { get; set; } = true;
         LibraryFilesViewModel ViewModel;
         #region "Properties"
         public bool IsDataSourceNode { get; set; } = true;

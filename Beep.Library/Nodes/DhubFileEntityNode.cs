@@ -43,7 +43,7 @@ namespace Beep.Library.Nodes
             }
             ViewModel = viewModel;
         }
-
+        public bool Visible { get; set; } = true;
         #region "Properties"
         LibraryFilesViewModel ViewModel;
         public bool IsDataSourceNode { get; set; } = true;
